@@ -13,11 +13,13 @@ eleGrid.classList.add('hidden')
 eleWin.classList.add('hidden')
 
 
+// starting the game 
 startBtn.addEventListener("click", function () {
 	eleGrid.classList.remove('hidden')
 	info.classList.add('hidden')
 
 
+	// switching between difficulty level
 	const level = document.querySelector("#level").value;
 	let cellWidth;
 	if (level == "easy") {
@@ -29,16 +31,20 @@ startBtn.addEventListener("click", function () {
 	}
 
 
+	// creating cell element
 	eleGrid.innerHTML = "";
 	for (let i = 1; i <= cellWidth; i++) {
 		eleGrid.innerHTML += `<div class="cell">${i}</div>`;
 	}
 
 
+	// putting number inside cell element
 	const listCell = document.querySelectorAll(".cell");
 	for (let i = 0; i < listCell.length; i++) {
 		let cell = listCell[i];
 		
+
+		// adding clicked class and lose pop-up
 		cell.addEventListener("click", function colorCell() {
 			if (arrBombs.includes(i + 1)) {
 				this.classList.toggle("explode");
@@ -52,6 +58,7 @@ startBtn.addEventListener("click", function () {
 			};
 			
 
+			// adding win pop-up and removing grid
 			if (score === 84 && level === 'easy') {
 				eleWin.classList.remove('hidden')
 				eleGrid.classList.add('hidden');
@@ -68,7 +75,8 @@ startBtn.addEventListener("click", function () {
 				
 	}
 	
-	
+
+	// adding difficulty class to cell and removing win/lose pop-up
 	if (level == "easy") {
 		let easy = document.querySelectorAll(".cell");
 		for (let i = 0; i < easy.length; i++) {
@@ -96,6 +104,7 @@ startBtn.addEventListener("click", function () {
 	}
 
 
+	//generating 16 "bombs" and putting them in arrBombs
 	arrBombs = [];
 	for (let i = 1; i <= 16; i++) {
 		bombs = getRndInteger(1, cellWidth, arrBombs);
@@ -105,8 +114,10 @@ startBtn.addEventListener("click", function () {
 	
 });
 
-// function
-// -----------------------------------------------
+
+
+
+// function-------------------------------------------------------------------
 
 function getRndInteger(min, max, arr) {
 	let rand;
@@ -117,8 +128,8 @@ function getRndInteger(min, max, arr) {
 }
 
 
-function win(numCel,diff) {
+/*FIXME: function win(numCel,diff) {
 	if (score == (99-numCel) && level == `${diff}`) {
 		eleWin.classList.remove('hidden')
 	}
-}
+}*/
