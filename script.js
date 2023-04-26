@@ -27,12 +27,16 @@ startBtn.addEventListener("click", function () {
 	const listCell = document.querySelectorAll(".cell");
 	for (let i = 0; i < listCell.length; i++) {
 		let cell = listCell[i];
-
+		
 		cell.addEventListener("click", function colorCell() {
 			if (arrBombs.includes(i + 1)) {
 				console.log("perso");
-				cell.style.backgroundColor = "red";
-			} else {
+				this.classList.toggle("explode");
+			} 
+			// else if(){
+
+			// }
+			else{
 				this.classList.toggle("clicked");
 				points++;
 			}

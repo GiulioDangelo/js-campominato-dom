@@ -78,6 +78,10 @@ h1{
     background-color: rgb(0, 191, 255) !important;
 }
 
+.explode{
+    background-color: crimson;
+}
+
 .invisible{
     display: none;
 }
