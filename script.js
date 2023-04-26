@@ -44,7 +44,7 @@ startBtn.addEventListener("click", function () {
 
 	
 	for (let i = 1; i <= 16; i++) {
-		bombs = getRndInteger(1,50,arrBombs)
+		bombs = getRndInteger(1,cellWidth,arrBombs)
 		arrBombs.push(bombs)
 	}
 	
