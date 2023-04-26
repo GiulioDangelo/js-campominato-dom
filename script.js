@@ -17,6 +17,7 @@ startBtn.addEventListener("click", function () {
 		cellWidth = 100;
 	}
 
+
 	eleGrid.innerHTML = "";
 	for (let i = 1; i <= cellWidth; i++) {
 		eleGrid.innerHTML += `<div class="cell">${i}</div>`;
@@ -28,7 +29,7 @@ startBtn.addEventListener("click", function () {
 		let cell = listCell[i];
 
 		cell.addEventListener("click", function colorCell() {
-			if (arrBombs.includes(i)) {
+			if (arrBombs.includes(i + 1)) {
 				console.log("perso");
 				cell.style.backgroundColor = "red";
 			} else {
@@ -52,11 +53,13 @@ startBtn.addEventListener("click", function () {
 		}
 	}
 
+
 	arrBombs = [];
 	for (let i = 1; i <= 16; i++) {
 		bombs = getRndInteger(1, cellWidth, arrBombs);
 		arrBombs.push(bombs);
 	}
+
 });
 
 // function
@@ -72,6 +75,7 @@ startBtn.addEventListener("click", function () {
 // 		points++;
 // 	}
 // }
+
 
 function getRndInteger(min, max, arr) {
 	let rand;
