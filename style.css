@@ -12,7 +12,7 @@ nav{
     display: flex;
     justify-content: space-between;
     padding-inline: 15px;
-    height: 80px;
+    height: 8vh;
     display: flex;
     align-items: center;
 }
@@ -51,11 +51,25 @@ h1{
 }
 
 .container{
-    background-color: rgb(127, 255, 212);
+    background-color: rgb(138, 232, 127);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 85vh;
+}
+
+.info{
+    height: 600px;
+    font-size: 50px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red-text{
+    color: red;
 }
 
 .grid{
@@ -75,18 +89,20 @@ h1{
 }
 
 .clicked{
-    background-color: rgb(0, 191, 255) !important;
+    background-color: rgb(0, 191, 255);
+    pointer-events: none;
 }
 
 .explode{
     background-color: crimson;
+    pointer-events: none;
 }
 
 .invisible{
     display: none;
 }
 
-.easy{
+.hard{
    width: 85.7px;
    height: 85.7px;
 }
@@ -96,8 +112,20 @@ h1{
     height: 66.6px;
 }
 
+.easy{
+    width: 60px;
+    height: 60px;
+}
+
+.container-score{
+    margin-top: 50px;
+    display: flex;
+    font-size: 30px;
+    font-weight: 700;
+}
+
 footer{
-    height: 5vh;
+    height: 7vh;
 }
 
 .foot-text{
@@ -110,6 +138,19 @@ footer{
 
 a{
     margin-left: 10px;
+}
+
+.lose{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.hidden{
+    display: none;
 }
 
 /* hover effect */

@@ -1,20 +1,29 @@
 const startBtn = document.querySelector(".start");
-let points = 0;
+const info = document.querySelector(".info");
+const eleGrid = document.querySelector(".grid");
+let eleLose = document.querySelector(".lose");
+let eleScore = document.querySelector(".score");
+let score = 0;
 let bombs;
 let arrBombs;
 
+eleLose.classList.add('hidden');
+eleGrid.classList.add('hidden')
+
+
 startBtn.addEventListener("click", function () {
-	const eleGrid = document.querySelector(".grid");
+	eleGrid.classList.remove('hidden')
+	info.classList.add('hidden')
+
 
 	const level = document.querySelector("#level").value;
-	let cellWidth = 100;
+	let cellWidth;
 	if (level == "easy") {
-		cellWidth = 49;
-		// listCell.classList.toggle("easy");
+		cellWidth = 100;
 	} else if (level == "mid") {
 		cellWidth = 81;
 	} else if (level == "hard") {
-		cellWidth = 100;
+		cellWidth = 49;
 	}
 
 
@@ -30,17 +39,16 @@ startBtn.addEventListener("click", function () {
 		
 		cell.addEventListener("click", function colorCell() {
 			if (arrBombs.includes(i + 1)) {
-				console.log("perso");
 				this.classList.toggle("explode");
+				eleLose.classList.remove('hidden');
+				eleGrid.classList.add('hidden')
 			} 
-			// else if(){
-
-			// }
 			else{
 				this.classList.toggle("clicked");
-				points++;
+				score++;
+				eleScore.innerHTML = score
 			}
-
+			
 		});
 	}
 
@@ -49,11 +57,22 @@ startBtn.addEventListener("click", function () {
 		let easy = document.querySelectorAll(".cell");
 		for (let i = 0; i < easy.length; i++) {
 			easy[i].classList.add("easy");
+			eleLose.classList.add('hidden');
+			score = 0;
 		}
 	} else if (level == "mid") {
 		let mid = document.querySelectorAll(".cell");
 		for (let i = 0; i < mid.length; i++) {
 			mid[i].classList.add("mid");
+			eleLose.classList.add('hidden');
+			score = 0;
+		}
+	}else if (level == "hard") {
+		let hard = document.querySelectorAll(".cell");
+		for (let i = 0; i < hard.length; i++) {
+			hard[i].classList.add("hard");
+			eleLose.classList.add('hidden');
+			score = 0;
 		}
 	}
 
@@ -62,24 +81,13 @@ startBtn.addEventListener("click", function () {
 	for (let i = 1; i <= 16; i++) {
 		bombs = getRndInteger(1, cellWidth, arrBombs);
 		arrBombs.push(bombs);
-	}
+	}	
 
+	
 });
 
 // function
 // -----------------------------------------------
-
-// function colorCell() {
-// 	this.classList.toggle("clicked");
-// 	cell.querySelector('.cell').innerHTML
-// 	if (cell == arrBombs) {
-// 		console.log("perso");
-// 		cell.style.backgroundColor = "red";
-// 	} else {
-// 		points++;
-// 	}
-// }
-
 
 function getRndInteger(min, max, arr) {
 	let rand;
