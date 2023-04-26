@@ -3,12 +3,14 @@ const info = document.querySelector(".info");
 const eleGrid = document.querySelector(".grid");
 let eleLose = document.querySelector(".lose");
 let eleScore = document.querySelector(".score");
+let eleWin = document.querySelector('.win')
 let score = 0;
 let bombs;
 let arrBombs;
 
 eleLose.classList.add('hidden');
 eleGrid.classList.add('hidden')
+eleWin.classList.add('hidden')
 
 
 startBtn.addEventListener("click", function () {
@@ -41,23 +43,38 @@ startBtn.addEventListener("click", function () {
 			if (arrBombs.includes(i + 1)) {
 				this.classList.toggle("explode");
 				eleLose.classList.remove('hidden');
-				eleGrid.classList.add('hidden')
+				eleGrid.classList.add('hidden');
 			} 
 			else{
 				this.classList.toggle("clicked");
 				score++;
 				eleScore.innerHTML = score
-			}
+			};
 			
+
+			if (score === 84 && level === 'easy') {
+				eleWin.classList.remove('hidden')
+				eleGrid.classList.add('hidden');
+			}
+			else if(score === 65 && level == 'mid'){
+				eleWin.classList.remove('hidden')
+				eleGrid.classList.add('hidden');
+			}
+			else if(score === 33 && level == 'hard'){
+				eleWin.classList.remove('hidden')
+				eleGrid.classList.add('hidden');
+			};
 		});
+				
 	}
-
-
+	
+	
 	if (level == "easy") {
 		let easy = document.querySelectorAll(".cell");
 		for (let i = 0; i < easy.length; i++) {
 			easy[i].classList.add("easy");
 			eleLose.classList.add('hidden');
+			eleWin.classList.add('hidden');
 			score = 0;
 		}
 	} else if (level == "mid") {
@@ -65,6 +82,7 @@ startBtn.addEventListener("click", function () {
 		for (let i = 0; i < mid.length; i++) {
 			mid[i].classList.add("mid");
 			eleLose.classList.add('hidden');
+			eleWin.classList.add('hidden');
 			score = 0;
 		}
 	}else if (level == "hard") {
@@ -72,6 +90,7 @@ startBtn.addEventListener("click", function () {
 		for (let i = 0; i < hard.length; i++) {
 			hard[i].classList.add("hard");
 			eleLose.classList.add('hidden');
+			eleWin.classList.add('hidden');
 			score = 0;
 		}
 	}
@@ -95,4 +114,11 @@ function getRndInteger(min, max, arr) {
 		rand = Math.floor(Math.random() * (max - min + 1)) + min;
 	} while (arr.includes(rand));
 	return rand;
+}
+
+
+function win(numCel,diff) {
+	if (score == (99-numCel) && level == `${diff}`) {
+		eleWin.classList.remove('hidden')
+	}
 }

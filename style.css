@@ -140,7 +140,7 @@ a{
     margin-left: 10px;
 }
 
-.lose{
+.lose,.win{
     width: 600px;
     height: 600px;
     display: flex;
