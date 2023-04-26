@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: sans-serif;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 15px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    margin-right: 20px;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.right{
+    font-size: 18px;
+}
+
+#level{
+    font-size: 20px;
+    padding: 2px 30px;
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+.start{
+    font-size: 20px;
+    margin-left: 5px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
+.container{
+    background-color: rgb(127, 255, 212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+}
+
+.grid{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell{
+    width: 60px;
+    height: 60px;
+    outline: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clicked{
+    background-color: rgb(0, 191, 255) !important;
+}
+
+.invisible{
+    display: none;
+}
+
+.easy{
+   width: 85.7px;
+   height: 85.7px;
+}
+
+.mid{
+    width: 66.6px;
+    height: 66.6px;
+}
+
+footer{
+    height: 5vh;
+}
+
+.foot-text{
+    height: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+a{
+    margin-left: 10px;
+}
+
+/* hover effect */
+#level:hover,.start:hover,.cell:hover{
+    cursor: pointer;
+}
