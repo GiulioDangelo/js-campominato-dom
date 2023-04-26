@@ -1,7 +1,7 @@
 const startBtn = document.querySelector(".start");
 let points = 0;
-let arrBombs = []
 let bombs;
+let arrBombs;
 
 startBtn.addEventListener("click", function () {
 	const eleGrid = document.querySelector(".grid");
@@ -16,19 +16,20 @@ startBtn.addEventListener("click", function () {
 	} else if (level == "hard") {
 		cellWidth = 100;
 	}
+	
 
 	eleGrid.innerHTML = "";
 	for (let i = 1; i <= cellWidth; i++) {
 		eleGrid.innerHTML += `<div class="cell">${i}</div>`;
 	}
+	
 
-	// TODO:
 	const listCell = document.querySelectorAll(".cell");
-
 	for (let i = 0; i < listCell.length; i++) {
 		let cell = listCell[i];
 		cell.addEventListener("click", colorCell);
 	}
+	
 
 	if (level == "easy") {
 		let easy = document.querySelectorAll(".cell");
@@ -41,12 +42,14 @@ startBtn.addEventListener("click", function () {
 			mid[i].classList.add("mid");
 		}
 	}
-
 	
+	
+	arrBombs = []
 	for (let i = 1; i <= 16; i++) {
 		bombs = getRndInteger(1,cellWidth,arrBombs)
 		arrBombs.push(bombs)
 	}
+
 	
 });
 
@@ -58,8 +61,11 @@ startBtn.addEventListener("click", function () {
 
 function colorCell() {
 	this.classList.toggle("clicked");
-	if (condition) {
-	} else {
+	cell = document.querySelectorAll(".cell").innerHTML
+	if (cell === arrBombs) {
+		console.log('perso')
+	} 
+	else {
 		points++;
 	}
 }
