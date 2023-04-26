@@ -16,20 +16,29 @@ startBtn.addEventListener("click", function () {
 	} else if (level == "hard") {
 		cellWidth = 100;
 	}
-	
 
 	eleGrid.innerHTML = "";
 	for (let i = 1; i <= cellWidth; i++) {
 		eleGrid.innerHTML += `<div class="cell">${i}</div>`;
 	}
-	
+
 
 	const listCell = document.querySelectorAll(".cell");
 	for (let i = 0; i < listCell.length; i++) {
 		let cell = listCell[i];
-		cell.addEventListener("click", colorCell);
+
+		cell.addEventListener("click", function colorCell() {
+			if (arrBombs.includes(i)) {
+				console.log("perso");
+				cell.style.backgroundColor = "red";
+			} else {
+				this.classList.toggle("clicked");
+				points++;
+			}
+
+		});
 	}
-	
+
 
 	if (level == "easy") {
 		let easy = document.querySelectorAll(".cell");
@@ -42,39 +51,32 @@ startBtn.addEventListener("click", function () {
 			mid[i].classList.add("mid");
 		}
 	}
-	
-	
-	arrBombs = []
+
+	arrBombs = [];
 	for (let i = 1; i <= 16; i++) {
-		bombs = getRndInteger(1,cellWidth,arrBombs)
-		arrBombs.push(bombs)
+		bombs = getRndInteger(1, cellWidth, arrBombs);
+		arrBombs.push(bombs);
 	}
-
-	
 });
-
-
-
 
 // function
 // -----------------------------------------------
 
-function colorCell() {
-	this.classList.toggle("clicked");
-	cell = document.querySelectorAll(".cell").innerHTML
-	if (cell === arrBombs) {
-		console.log('perso')
-	} 
-	else {
-		points++;
-	}
-}
+// function colorCell() {
+// 	this.classList.toggle("clicked");
+// 	cell.querySelector('.cell').innerHTML
+// 	if (cell == arrBombs) {
+// 		console.log("perso");
+// 		cell.style.backgroundColor = "red";
+// 	} else {
+// 		points++;
+// 	}
+// }
 
-
-function getRndInteger(min, max,arr) {
+function getRndInteger(min, max, arr) {
 	let rand;
 	do {
-		rand = Math.floor(Math.random() * (max - min + 1) ) + min;
-	} while (arr.includes(rand))
-	return rand
+		rand = Math.floor(Math.random() * (max - min + 1)) + min;
+	} while (arr.includes(rand));
+	return rand;
 }
